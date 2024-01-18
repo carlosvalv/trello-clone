@@ -1,13 +1,16 @@
-import React from 'react';
-import './App.css';
-import List from './components/List/List';
+import "./App.css";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import Lists from "./components/Lists";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Trello clone</h1>
-      <List />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <h1>Trello clone</h1>
+        <Lists />
+      </div>
+    </Provider>
   );
 }
 
