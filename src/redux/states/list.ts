@@ -2,10 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { List } from "../../types/List";
 import { LocalStorageTypes } from "../../enums/localStorage";
 import { getLocalStorage, setLocalStorage } from "../../utilities/localStorage";
+import {v4 as uuidv4} from 'uuid';
 
 const initialState: List[] = [
-  { id: "1", cards: ["1", "2"] },
-  { id: "2", cards: ["3", "4"] },
+  { id: uuidv4(), cards: ["1", "2"] },
+  { id: uuidv4(), cards: ["3", "4"] },
 ];
 
 export const listsSlice = createSlice({

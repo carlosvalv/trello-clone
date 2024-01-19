@@ -5,6 +5,7 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { updateLists } from "../redux/states/list";
 import { arrayMove } from "../utilities/array";
 import { List } from "../types/List";
+import BtnAddList from "./BtnAddList/BtnAddList";
 
 function Lists() {
   const stateLists = useSelector((store: AppStore) => store.lists);
@@ -43,6 +44,7 @@ function Lists() {
           return <ListView key={list.id} list={list} />;
         })}
       </DragDropContext>
+      <BtnAddList />
     </div>
   );
 }

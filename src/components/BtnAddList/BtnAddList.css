@@ -1,0 +1,8 @@
+.btn-add-list {
+  width: 272px;
+  cursor: pointer;
+  opacity: 0.65;
+}
+.btn-add-list:hover{
+  opacity: 0.85;
+}

@@ -32,7 +32,7 @@ function ListView(props: ListProps) {
       <Droppable droppableId={props.list.id}>
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
-            <div style={{ background: "transparent" }}>
+            <div style={{ background: "transparent", minHeight: 1}}>
               {list.cards &&
                 list.cards.map((card, index) => (
                   <Draggable key={card} draggableId={card} index={index}>
@@ -57,7 +57,6 @@ function ListView(props: ListProps) {
           </div>
         )}
       </Droppable>
-      <div className="cards"></div>
     </div>
   );
 }

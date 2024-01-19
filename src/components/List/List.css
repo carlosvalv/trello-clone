@@ -1,21 +1,22 @@
-.container{
+.container {
   border-radius: 6px;
   background-color: #f1f2f4;
   padding: 8px 16px;
-  width: 272px;
-
-
+  min-width: 272px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
-h2{
-   font-size: 14px; 
-   margin: 0;
-   text-align: left;
-   color: #172B4D;
-   font-weight: 500;
+h2 {
+  font-size: 14px;
+  margin: 0;
+  text-align: left;
+  color: #172b4d;
+  font-weight: 500;
 }
 
-.container .cards{
+.container .cards {
   display: flex;
   flex-direction: column;
   gap: 14px;
