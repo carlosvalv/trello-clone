@@ -19,10 +19,17 @@ export const listsSlice = createSlice({
       setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(newState));
       return newState;
     },
-    removeCard: (state, action) => {
-      console.log(state, action);
+    updateLists: (state, action) => {
+      const newState = state.map((list: List) => {
+        let newList = action.payload.filter((x: List) => x.id === list.id);
+        if (newList.length) return newList[0];
+        return list;
+      });
+
+      setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(newState));
+      return newState;
     },
   },
 });
 
-export const { addList } = listsSlice.actions;
+export const { addList, updateLists } = listsSlice.actions;

@@ -1,4 +1,4 @@
 export type List = {
   id: string
-  cards? : string[]
+  cards: string[]
 }
