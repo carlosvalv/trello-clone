@@ -1,0 +1,23 @@
+.container{
+  border-radius: 6px;
+  background-color: #f1f2f4;
+  padding: 8px 16px;
+  width: 272px;
+
+
+}
+
+h2{
+   font-size: 14px; 
+   margin: 0;
+   text-align: left;
+   color: #172B4D;
+   font-weight: 500;
+}
+
+.container .cards{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
