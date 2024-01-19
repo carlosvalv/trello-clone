@@ -1,10 +1,22 @@
 .App {
   text-align: center;
   padding: 2em;
+  height: 100vh;
+  display: flex;
+    flex-direction: column;
 }
 
 .lists {
   display: flex;
   gap: 1em;
   align-items: flex-start;
+  overflow-x: scroll;
+  flex:1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
 }
