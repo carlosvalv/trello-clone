@@ -7,6 +7,9 @@ import {
 } from "react-beautiful-dnd";
 import { List } from "../../types/List";
 import CardView from "../Card/CardView";
+import { TrashIcon } from "../svgs/TrashIcon";
+import { useDispatch } from "react-redux";
+import { deleteList } from "../../redux/states/list";
 
 const getItemStyle = (
   isDragging: boolean,
@@ -24,15 +27,24 @@ type ListProps = {
 
 function ListView(props: ListProps) {
   const { list } = props;
+  const dispatch = useDispatch();
+
+  const clickDelete = () => {
+    dispatch(deleteList(list.id));
+  };
+
   return (
     <div className="container">
-      <div>
-        <h2>Title</h2>
+      <div className="header">
+        <h2>Title {props.list.id}</h2>
+        <div className="delete-icon" onClick={clickDelete}>
+          <TrashIcon />
+        </div>
       </div>
       <Droppable droppableId={props.list.id}>
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
-            <div style={{ background: "transparent", minHeight: 1}}>
+            <div style={{ background: "transparent", minHeight: 1 }}>
               {list.cards &&
                 list.cards.map((card, index) => (
                   <Draggable key={card} draggableId={card} index={index}>
