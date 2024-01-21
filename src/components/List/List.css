@@ -3,6 +3,7 @@
   background-color: #f1f2f4;
   padding: 8px 16px;
   min-width: 272px;
+  max-height: 100%;
   width: 272px;
   display: flex;
   flex-direction: column;
@@ -43,4 +44,5 @@ h2 {
   flex-direction: column;
   gap: 14px;
   margin-top: 12px;
+  overflow-y: auto;
 }

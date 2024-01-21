@@ -10,6 +10,7 @@ import CardView from "../Card/CardView";
 import { TrashIcon } from "../svgs/TrashIcon";
 import { useDispatch } from "react-redux";
 import { deleteList } from "../../redux/states/list";
+import BtnAddCard from "../BtnAddCard/BtnAddCard";
 
 const getItemStyle = (
   isDragging: boolean,
@@ -36,12 +37,12 @@ function ListView(props: ListProps) {
   return (
     <div className="container">
       <div className="header">
-        <h2>Title {props.list.id}</h2>
+        <h2>Title {list.id}</h2>
         <div className="delete-icon" onClick={clickDelete}>
           <TrashIcon />
         </div>
       </div>
-      <Droppable droppableId={props.list.id}>
+      <Droppable droppableId={list.id}>
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             <div style={{ background: "transparent", minHeight: 1 }}>
@@ -58,8 +59,7 @@ function ListView(props: ListProps) {
                           provided.draggableProps.style
                         )}
                       >
-                        <CardView />
-                        {card}
+                        <CardView id={card} />
                       </div>
                     )}
                   </Draggable>
@@ -69,6 +69,7 @@ function ListView(props: ListProps) {
           </div>
         )}
       </Droppable>
+      <div className="footer"><BtnAddCard listId={list.id} /></div>
     </div>
   );
 }

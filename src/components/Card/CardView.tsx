@@ -1,9 +1,13 @@
 import "./Card.css";
 
-function CardView() {
+type CardViewProps ={
+  id: string
+}
+
+function CardView(props: CardViewProps) {
   return (
     <div className="card" draggable>  
-      <span>Card name</span>
+      <span>Card name : {props.id}</span>
     </div>
   );
 }
