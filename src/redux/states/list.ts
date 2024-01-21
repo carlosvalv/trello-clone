@@ -5,8 +5,8 @@ import { getLocalStorage, setLocalStorage } from "../../utilities/localStorage";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState: List[] = [
-  { id: uuidv4(), cards: ["1", "2"] },
-  { id: uuidv4(), cards: ["3", "4"] },
+  { id: uuidv4(), name: "TODO", cards: ["1", "2"] },
+  { id: uuidv4(), name: "DONE", cards: ["3", "4"] },
 ];
 
 export const listsSlice = createSlice({
