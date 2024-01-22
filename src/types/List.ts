@@ -1,4 +1,5 @@
 export type List = {
-  id: string
-  cards: string[]
-}
+  id: string;
+  name: string;
+  cards: string[];
+};

@@ -8,7 +8,7 @@ function BtnAddList() {
   const dispatch = useDispatch();
 
   const click = () => {
-    let list: List = { id: uuidv4(), cards: [] };
+    let list: List = { id: uuidv4(), name: "New List", cards: [] };
     dispatch(addList(list));
   };
 
