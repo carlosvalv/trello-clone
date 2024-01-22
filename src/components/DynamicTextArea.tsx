@@ -16,12 +16,7 @@ const DynamicHeightTextarea = (props: DynamicHeightTextareaProps) => {
   };
 
   return (
-    <TextareaAutosize
-      onChange={handleChange}
-      value={text}
-      defaultValue={defaultValue}
-      maxLength={512}
-    />
+    <TextareaAutosize onChange={handleChange} value={text} maxLength={512} />
   );
 };
 
