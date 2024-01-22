@@ -31,7 +31,7 @@ type ListProps = {
 export const ListContext = createContext<List>({
   id: "",
   name: "",
-  cards: []
+  cards: [],
 });
 
 function ListView(props: ListProps) {
@@ -46,7 +46,7 @@ function ListView(props: ListProps) {
     <ListContext.Provider value={list}>
       <div className="container">
         <div className="header">
-          <ListTitle id={list.id} />
+          <ListTitle />
           <div className="delete-icon" onClick={clickDelete}>
             <TrashIcon />
           </div>

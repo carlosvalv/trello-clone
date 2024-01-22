@@ -3,13 +3,9 @@ import "./ListTitle.css";
 import { ListContext } from "../ListView";
 import { updateLists } from "../../../redux/states/list";
 import { useDispatch } from "react-redux";
-import useAutosizeTextArea from "../../../hooks/useAutosizeTextArea";
+import DynamicHeightTextarea from "../../DynamicTextArea";
 
-type ListTitleProps = {
-  id: string;
-};
-
-function ListTitle(props: ListTitleProps) {
+function ListTitle() {
   const [isEditing, setIsEditing] = useState(false);
   const textareaRef = useRef(null);
   const list = useContext(ListContext);
@@ -17,16 +13,13 @@ function ListTitle(props: ListTitleProps) {
 
   const [name, setName] = useState(list.name);
 
-  console.log(name)
-  useAutosizeTextArea(textareaRef.current, name);
-
   useEffect(() => {
     function handleClickOutside(event: any) {
       //@ts-ignore
       if (textareaRef.current && !textareaRef.current.contains(event.target)) {
         setIsEditing(false);
-        if(name === "") return;
-        let editList = {...list};
+        if (name === "") return;
+        let editList = { ...list };
         editList.name = name.trim();
         dispatch(updateLists([editList]));
       }
@@ -44,19 +37,18 @@ function ListTitle(props: ListTitleProps) {
   };
 
   const onChange = (text: string) => {
-    console.log(text);
     setName(text);
   };
 
   return (
     <div className="list-title" onClick={onClick}>
       {isEditing ? (
-        <textarea
-          maxLength={512}
-          onChange={(e) => onChange(e.target.value)}
-          ref={textareaRef}
-          defaultValue={list.name}
-        ></textarea>
+        <div ref={textareaRef} className="textarea-container">
+          <DynamicHeightTextarea
+            defaultValue={list.name}
+            onChange={(text) => onChange(text)}
+          />
+        </div>
       ) : (
         <h2>{list.name}</h2>
       )}
