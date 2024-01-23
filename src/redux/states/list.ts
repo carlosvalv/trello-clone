@@ -3,6 +3,7 @@ import { List } from "../../types/List";
 import { LocalStorageTypes } from "../../enums/localStorage";
 import { getLocalStorage, setLocalStorage } from "../../utilities/localStorage";
 import { v4 as uuidv4 } from "uuid";
+import { arrayMove } from "../../utilities/array";
 
 const initialState: List[] = [
   { id: uuidv4(), name: "TODO", cards: ["1", "2"] },
@@ -35,7 +36,12 @@ export const listsSlice = createSlice({
       setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(newState));
       return newState;
     },
+    reorderList: (state, action) => {
+      const newState = arrayMove(state, action.payload[0], action.payload[1]);
+      setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(newState));
+      return newState;
+    },
   },
 });
 
-export const { addList, updateLists, deleteList } = listsSlice.actions;
+export const { addList, updateLists, deleteList, reorderList } = listsSlice.actions;
