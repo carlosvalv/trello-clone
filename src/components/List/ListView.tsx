@@ -51,7 +51,11 @@ function ListView(props: ListProps) {
             <TrashIcon />
           </div>
         </div>
-        <Droppable droppableId={list.id}>
+        <Droppable
+          droppableId={list.id}
+          ignoreContainerClipping={true}
+          type="cards"
+        >
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               <div style={{ background: "transparent", minHeight: 1 }}>
