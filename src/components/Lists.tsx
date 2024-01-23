@@ -13,6 +13,7 @@ import { reorderList, updateLists } from "../redux/states/list";
 import { arrayMove } from "../utilities/array";
 import { List } from "../types/List";
 import BtnAddList from "./BtnAddList/BtnAddList";
+import DraggableScroll from "./Draggable";
 
 function Lists() {
   const stateLists = useSelector((store: AppStore) => store.lists);
@@ -26,6 +27,7 @@ function Lists() {
     boxShadow: isDragging ? "0.1875em 0.1875em 0.25em rgba(0, 0, 0, 0.1)" : "",
     marginBottom: isDragging ? "0em" : "0em",
     marginRight: "1em",
+    height: "min-content",
     ...draggableStyle,
   });
 
@@ -69,49 +71,48 @@ function Lists() {
   };
 
   return (
-    <div className="lists">
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId={"lists"} direction="horizontal" type="lists">
-          {(provided) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              style={{
-                display: "flex",
-                flex: "none",
-                background: "transparent",
-                minHeight: 1,
-                gap: 0,
-                overflow: "hidden",
-              }}
-            >
-              {stateLists.map((list, index) => {
-                return (
-                  <Draggable key={list.id} draggableId={list.id} index={index}>
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style
-                        )}
-                      >
-                        <ListView list={list} />
-                      </div>
-                    )}
-                  </Draggable>
-                );
-              })}
+    <DraggableScroll whiteListClasses={["lists", "lists-droppable"]}>
+      <div className="lists">
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId={"lists"} direction="horizontal" type="lists">
+            {(provided) => (
+              <div
+                className="lists-droppable"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {stateLists.map((list, index) => {
+                  return (
+                    <Draggable
+                      key={list.id}
+                      draggableId={list.id}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          )}
+                        >
+                          <ListView list={list} />
+                        </div>
+                      )}
+                    </Draggable>
+                  );
+                })}
 
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-      <BtnAddList />
-    </div>
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+        <BtnAddList />
+      </div>
+    </DraggableScroll>
   );
 }
 
