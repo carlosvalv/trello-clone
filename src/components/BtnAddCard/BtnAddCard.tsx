@@ -4,6 +4,8 @@ import { updateLists } from "../../redux/states/list";
 import { v4 as uuidv4 } from "uuid";
 import { AddIcon } from "../svgs/AddIcon";
 import { AppStore } from "../../redux/store";
+import { Card } from "../../types/Card";
+import { addCard } from "../../redux/states/card";
 
 type BtnAddCardProps = {
   listId: string;
@@ -16,9 +18,11 @@ function BtnAddCard(props: BtnAddCardProps) {
   const click = () => {
     let list = { ...stateLists.find((x) => x.id === props.listId) };
     let cards = [...list?.cards!];
-    cards.push(uuidv4());
+    let card : Card = {id : uuidv4(), title : "New Card"};
+    cards.push(card.id);
     list.cards = cards;
     dispatch(updateLists([list]));
+    dispatch(addCard(card));
   };
 
   return (
