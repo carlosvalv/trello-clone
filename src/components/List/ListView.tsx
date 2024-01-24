@@ -13,6 +13,7 @@ import { deleteList } from "../../redux/states/list";
 import BtnAddCard from "../BtnAddCard/BtnAddCard";
 import ListTitle from "./ListTitle/ListTitle";
 import { createContext } from "react";
+import { deleteCards } from "../../redux/states/card";
 
 const getItemStyle = (
   isDragging: boolean,
@@ -39,6 +40,7 @@ function ListView(props: ListProps) {
   const dispatch = useDispatch();
 
   const clickDelete = () => {
+    dispatch(deleteCards(list.cards));
     dispatch(deleteList(list.id));
   };
 
