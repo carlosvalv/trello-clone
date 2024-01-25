@@ -21,8 +21,18 @@ export const cardsSlice = createSlice({
       setLocalStorage(LocalStorageTypes.CARDS, JSON.stringify(newState));
       return newState;
     },
+    updateCards: (state, action) => {
+      const newState = state.map((card: Card) => {
+        let newCard = action.payload.filter((x: Card) => x.id === card.id);
+        if (newCard.length) return newCard[0];
+        return card;
+      });
+
+      setLocalStorage(LocalStorageTypes.CARDS, JSON.stringify(newState));
+      return newState;
+    },
     deleteCards: (state, action) => {
-      const cardsId : string[] = action.payload;
+      const cardsId: string[] = action.payload;
       const newState = state.filter((list: Card) => !cardsId.includes(list.id));
       setLocalStorage(LocalStorageTypes.CARDS, JSON.stringify(newState));
       return newState;
@@ -30,4 +40,4 @@ export const cardsSlice = createSlice({
   },
 });
 
-export const { addCard, deleteCards } = cardsSlice.actions;
+export const { addCard, updateCards, deleteCards } = cardsSlice.actions;

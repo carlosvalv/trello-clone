@@ -1,11 +1,27 @@
-.card-detail{
+.card-detail {
   border-radius: 8px;
   background-color: #fff;
   padding: 8px 16px;
   border: 2px solid transparent;
-  box-shadow: 0px 1px 1px #091E4240, 0px 0px 1px #091E424F;
+  box-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  min-width: 320px;
+  & .header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  & .close-icon {
+    width: 28px;
+    padding: 6px;
+    border-radius: 1em;
+    cursor: pointer;
+    display: flex;
+    &:hover {
+      background-color: #091e4224;
+    }
+  }
 }
