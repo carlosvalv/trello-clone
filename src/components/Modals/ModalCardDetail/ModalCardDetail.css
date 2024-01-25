@@ -15,8 +15,8 @@
     gap: 1em;
   }
   & .close-icon {
-    width: 32px;
-    padding: 8px;
+    width: 28px;
+    padding: 6px;
     border-radius: 1em;
     cursor: pointer;
     display: flex;
