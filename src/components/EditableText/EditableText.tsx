@@ -4,18 +4,27 @@ import DynamicHeightTextarea from "../DynamicTextArea";
 
 type EditableTextProps = {
   defaultText: string;
+  defaultEditing?: boolean;
+  allowEmpty?: boolean;
   onChange(text: string): void;
+  onExit?(): void;
 };
 
+EditableText.defaultProps= {
+  defaultEditing : false,
+  allowEmpty: false
+}
+
 function EditableText(props: EditableTextProps) {
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(props.defaultEditing);
   const textareaRef = useRef(null);
 
   const [name, setName] = useState(props.defaultText);
 
   const exitEditing = useCallback(() => {
     setIsEditing(false);
-    if (name === "") return;
+    if(props.onExit) props.onExit();
+    if (!props.allowEmpty && name === "") return;
     props.onChange(name.trim());
   }, [name, props]);
 

@@ -7,6 +7,7 @@ import { selectCardById } from "../../../redux/selectors/card";
 import EditableText from "../../EditableText/EditableText";
 import { updateCards } from "../../../redux/states/card";
 import { CloseIcon } from "../../svgs/CloseIcon";
+import EditDescription from "./EditDescription";
 
 type ModalCardDetailProps = {
   id: string;
@@ -43,6 +44,7 @@ function ModalCardDetail(props: ModalCardDetailProps) {
             <CloseIcon />
           </div>
         </div>
+        <EditDescription id={props.id} />
       </div>
     </Modal>
   );

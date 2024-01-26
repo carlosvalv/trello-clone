@@ -26,8 +26,10 @@ function Lists() {
     borderRadius: isDragging ? "8px" : "0em",
     boxShadow: isDragging ? "0.1875em 0.1875em 0.25em rgba(0, 0, 0, 0.1)" : "",
     marginBottom: isDragging ? "0em" : "0em",
+    height: "fit-content",
+    display: "flex",
+    maxHeight: "100%",
     marginRight: "1em",
-    height: "min-content",
     ...draggableStyle,
   });
 

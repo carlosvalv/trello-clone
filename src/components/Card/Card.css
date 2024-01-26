@@ -4,13 +4,22 @@
   padding: 8px 16px;
   border: 2px solid transparent;
   cursor: pointer;
-  box-shadow: 0px 1px 1px #091E4240, 0px 0px 1px #091E424F
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
+  & .description-icon {
+    width: 12px;
+    & svg {
+      fill: #172b4d;
+    }
+  }
 }
 .card span {
   text-align: left;
   display: block;
   font-size: 14px;
-  color :#172b4d;
+  color: #172b4d;
 }
 .card:hover {
   border: 2px solid #d0d0d0;
