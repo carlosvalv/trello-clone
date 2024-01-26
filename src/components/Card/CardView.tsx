@@ -23,7 +23,7 @@ function CardView(props: CardViewProps) {
 
   return (
     <div className="card" draggable onClick={onClick}>
-      <span>Card name : {card.title}</span>
+      <span>{card.title}</span>
     </div>
   );
 }
