@@ -5,6 +5,7 @@ import { selectCardById } from "../../redux/selectors/card";
 import { openModal } from "../../redux/states/modal";
 import { Modal } from "../../types/Modal";
 import { ModalTypes } from "../../enums/Modal";
+import { DescriptionIcon } from "../svgs/DescriptionIcon";
 
 type CardViewProps = {
   id: string;
@@ -24,6 +25,7 @@ function CardView(props: CardViewProps) {
   return (
     <div className="card" draggable onClick={onClick}>
       <span>{card.title}</span>
+      <div className="description-icon">{card.description ? <DescriptionIcon /> : null}</div> 
     </div>
   );
 }

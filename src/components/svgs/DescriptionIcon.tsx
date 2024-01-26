@@ -1,0 +1,70 @@
+export const DescriptionIcon = () => {
+  return (
+    <svg
+      viewBox="4 4 16 16"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      // xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <title>Align-Left</title>
+      <g
+        id="Page-1"
+        stroke="none"
+        strokeWidth="1"
+        fill="none"
+        fillRule="evenodd"
+      >
+        <g id="Align-Left">
+          <rect
+            id="Rectangle"
+            fillRule="nonzero"
+            x="0"
+            y="0"
+            width="24"
+            height="24"
+          ></rect>
+          <line
+            x1="5"
+            y1="6"
+            x2="19"
+            y2="6"
+            id="Path"
+            stroke="#172b4d"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          ></line>
+          <line
+            x1="5"
+            y1="14"
+            x2="19"
+            y2="14"
+            id="Path"
+            stroke="#172b4d"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          ></line>
+          <line
+            x1="5"
+            y1="10"
+            x2="13"
+            y2="10"
+            id="Path"
+            stroke="#172b4d"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          ></line>
+          <line
+            x1="5"
+            y1="18"
+            x2="13"
+            y2="18"
+            id="Path"
+            stroke="#172b4d"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          ></line>
+        </g>
+      </g>
+    </svg>
+  );
+};
