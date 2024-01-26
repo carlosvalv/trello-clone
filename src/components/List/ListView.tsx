@@ -59,7 +59,11 @@ function ListView(props: ListProps) {
           type="cards"
         >
           {(provided) => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              style={{ overflowY: "auto" }}
+            >
               <div style={{ background: "transparent", minHeight: 1 }}>
                 {list.cards &&
                   list.cards.map((card, index) => (

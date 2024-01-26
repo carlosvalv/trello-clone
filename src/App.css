@@ -16,6 +16,7 @@
     flex: none;
     overflow: hidden;
     height: 100%;
+    align-items: flex-start;
   }
 }
 
