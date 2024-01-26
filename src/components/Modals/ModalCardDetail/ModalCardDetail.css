@@ -9,10 +9,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   min-width: 320px;
+  max-width: 700px;
+  width: 100%;
   & .header {
     display: flex;
     align-items: center;
     gap: 1em;
+
+    & h2, textarea{
+      font-size: 20px;
+    }
   }
   & .close-icon {
     width: 28px;
@@ -22,6 +28,36 @@
     display: flex;
     &:hover {
       background-color: #091e4224;
+    }
+
+    
+  }
+  & .description{
+    padding: 0.5em;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    & h2{
+      font-size: 16px;
+    }
+    & .add-description{
+      background-color:  #091E420F;
+      min-height: 56px;
+      padding: 8px 12px;
+      font-weight: 500;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+      
+    }
+    & .editable-text{
+      & h2{
+        font-size: 14px;
+        padding: 0;
+      }
+    }
+    & textarea{
+      min-height: 56px;
     }
   }
 }
