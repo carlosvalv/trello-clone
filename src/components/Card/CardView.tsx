@@ -25,7 +25,11 @@ function CardView(props: CardViewProps) {
   return (
     <div className="card" draggable onClick={onClick}>
       <span>{card.title}</span>
-      <div className="description-icon">{card.description ? <DescriptionIcon /> : null}</div> 
+      {card.description ? (
+        <div className="description-icon">
+          <DescriptionIcon />
+        </div>
+      ) : null}
     </div>
   );
 }
