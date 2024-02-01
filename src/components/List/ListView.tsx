@@ -7,13 +7,13 @@ import {
 } from "react-beautiful-dnd";
 import { List } from "../../types/List";
 import CardView from "../Card/CardView";
-import { TrashIcon } from "../svgs/TrashIcon";
 import { useDispatch } from "react-redux";
 import { deleteList } from "../../redux/states/list";
 import BtnAddCard from "../BtnAddCard/BtnAddCard";
 import ListTitle from "./ListTitle/ListTitle";
 import { createContext } from "react";
 import { deleteCards } from "../../redux/states/card";
+import BtnDelete from "../BtnDelete";
 
 const getItemStyle = (
   isDragging: boolean,
@@ -49,9 +49,7 @@ function ListView(props: ListProps) {
       <div className="container">
         <div className="header">
           <ListTitle />
-          <div className="delete-icon" onClick={clickDelete}>
-            <TrashIcon />
-          </div>
+          <BtnDelete onClick={clickDelete} />
         </div>
         <Droppable
           droppableId={list.id}

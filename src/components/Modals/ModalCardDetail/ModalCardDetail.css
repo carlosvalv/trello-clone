@@ -1,4 +1,7 @@
 .card-detail {
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   background-color: #fff;
   padding: 8px 16px;
@@ -11,15 +14,39 @@
   min-width: 320px;
   max-width: 700px;
   width: 100%;
-  & .header {
+  &:focus-visible{
+    outline: none;
+  }
+  & .header{
+    display: flex;
+    flex-direction: column;
+    & .list-name{
+      padding-left: 10px;
+      font-size: 14px;
+      & span{
+        text-decoration: underline;
+      }
+    }
+  }
+  & .header-title {
     display: flex;
     align-items: center;
     gap: 1em;
 
-    & h2, textarea{
+    & h2,
+    textarea {
       font-size: 20px;
     }
   }
+
+  & .body {
+    display: flex;
+
+    & .left {
+      flex: 1;
+    }
+  }
+
   & .close-icon {
     width: 28px;
     padding: 6px;
@@ -29,34 +56,31 @@
     &:hover {
       background-color: #091e4224;
     }
-
-    
   }
-  & .description{
+  & .description {
     padding: 0.5em;
     display: flex;
     gap: 1em;
     flex-direction: column;
-    & h2{
+    & h2 {
       font-size: 16px;
     }
-    & .add-description{
-      background-color:  #091E420F;
+    & .add-description {
+      background-color: #091e420f;
       min-height: 56px;
       padding: 8px 12px;
       font-weight: 500;
       border-radius: 3px;
       cursor: pointer;
       font-size: 14px;
-      
     }
-    & .editable-text{
-      & h2{
+    & .editable-text {
+      & h2 {
         font-size: 14px;
         padding: 0;
       }
     }
-    & textarea{
+    & textarea {
       min-height: 56px;
     }
   }

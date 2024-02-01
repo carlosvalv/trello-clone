@@ -9,7 +9,7 @@ function ListTitle() {
   const dispatch = useDispatch();
 
   const onChange = (text: string) => {
-    if (text !== "") return;
+    if (text === "") return;
     let editList = { ...list };
     editList.name = text.trim();
     dispatch(updateLists([editList]));
