@@ -5,9 +5,11 @@ import { closeModal } from "../../../redux/states/modal";
 import { AppStore } from "../../../redux/store";
 import { selectCardById } from "../../../redux/selectors/card";
 import EditableText from "../../EditableText/EditableText";
-import { updateCards } from "../../../redux/states/card";
+import { deleteCards, updateCards } from "../../../redux/states/card";
 import { CloseIcon } from "../../svgs/CloseIcon";
 import EditDescription from "./EditDescription";
+import BtnDelete from "../../BtnDelete";
+import { updateLists } from "../../../redux/states/list";
 
 type ModalCardDetailProps = {
   id: string;
@@ -18,6 +20,9 @@ function ModalCardDetail(props: ModalCardDetailProps) {
   const card = useSelector(
     (store: AppStore) => selectCardById(store.cards, props.id)[0]
   );
+  const list = useSelector((store: AppStore) =>
+    store.lists.find((x) => x.cards.includes(props.id))
+  );
 
   const onTitleChange = (title: string) => {
     let updateCard = { ...card };
@@ -25,26 +30,44 @@ function ModalCardDetail(props: ModalCardDetailProps) {
     dispatch(updateCards([updateCard]));
   };
 
+  const onDeleteCard = () => {
+    let listCopy = { ...list };
+    listCopy.cards = listCopy.cards!.filter((x) => x !== props.id);
+    dispatch(updateLists([listCopy]));
+    dispatch(deleteCards([props.id]));
+    dispatch(closeModal());
+  };
+
   return (
     <Modal open={true} onClose={() => dispatch(closeModal())}>
       <div className="card-detail">
         <div className="header">
-          <EditableText
-            defaultText={card.title}
-            onChange={(text: string) => {
-              onTitleChange(text);
-            }}
-          />
-          <div
-            className="close-icon"
-            onClick={() => {
-              dispatch(closeModal());
-            }}
-          >
-            <CloseIcon />
+          <div className="header-title">
+            <EditableText
+              defaultText={card.title}
+              onChange={(text: string) => {
+                onTitleChange(text);
+              }}
+            />
+            <div
+              className="close-icon"
+              onClick={() => {
+                dispatch(closeModal());
+              }}
+            >
+              <CloseIcon />
+            </div>
+          </div>
+            <div className="list-name">From list <span>{list?.name}</span></div>
+        </div>
+        <div className="body">
+          <div className="left">
+            <EditDescription id={props.id} />
+          </div>
+          <div className="right">
+            <BtnDelete onClick={onDeleteCard} />
           </div>
         </div>
-        <EditDescription id={props.id} />
       </div>
     </Modal>
   );
