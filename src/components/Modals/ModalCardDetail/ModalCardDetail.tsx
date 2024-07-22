@@ -10,6 +10,7 @@ import { CloseIcon } from "../../svgs/CloseIcon";
 import EditDescription from "./EditDescription";
 import BtnDelete from "../../BtnDelete";
 import { updateLists } from "../../../redux/states/list";
+import BtnMove from "../../BtnMove";
 
 type ModalCardDetailProps = {
   id: string;
@@ -17,6 +18,7 @@ type ModalCardDetailProps = {
 
 function ModalCardDetail(props: ModalCardDetailProps) {
   const dispatch = useDispatch();
+
   const card = useSelector(
     (store: AppStore) => selectCardById(store.cards, props.id)[0]
   );
@@ -58,7 +60,9 @@ function ModalCardDetail(props: ModalCardDetailProps) {
               <CloseIcon />
             </div>
           </div>
-            <div className="list-name">From list <span>{list?.name}</span></div>
+          <div className="list-name">
+            From list <span>{list?.name}</span>
+          </div>
         </div>
         <div className="body">
           <div className="left">
@@ -66,6 +70,7 @@ function ModalCardDetail(props: ModalCardDetailProps) {
           </div>
           <div className="right">
             <BtnDelete onClick={onDeleteCard} />
+            <BtnMove onClick={() => {}} id={props.id} />
           </div>
         </div>
       </div>
