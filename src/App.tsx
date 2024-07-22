@@ -8,7 +8,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <h1>Trello clone</h1>
+        <h1>TaskFlow</h1>
         <Lists />
       </div>
       <ModalManager />

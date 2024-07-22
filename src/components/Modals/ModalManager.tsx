@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { AppStore } from "../../redux/store";
 import { ModalTypes } from "../../enums/Modal";
