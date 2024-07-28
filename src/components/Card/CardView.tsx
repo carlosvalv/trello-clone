@@ -24,7 +24,7 @@ function CardView(props: CardViewProps) {
 
   return (
     <div className="card" draggable onClick={onClick}>
-      <span>{card.title}</span>
+      <span title={card.title}>{card.title}</span>
       {card.description ? (
         <div className="description-icon">
           <DescriptionIcon />
