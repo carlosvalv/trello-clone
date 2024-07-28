@@ -3,15 +3,16 @@
   padding: 2em;
   height: 100vh;
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
+  background: #838c91;
 }
 
 .lists {
   display: flex;
   align-items: flex-start;
-  overflow-x: scroll;
-  flex:1;
-  & .lists-droppable{
+  overflow-x: auto;
+  flex: 1;
+  & .lists-droppable {
     display: flex;
     flex: none;
     overflow: hidden;
