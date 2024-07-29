@@ -62,7 +62,7 @@ function ListView(props: ListProps) {
               ref={provided.innerRef}
               style={{ overflowY: "auto" }}
             >
-              <div style={{ background: "transparent", minHeight: 1 }}>
+              <div style={{ background: "transparent", minHeight: 1, marginTop: 1 }}>
                 {list.cards &&
                   list.cards.map((card, index) => (
                     <Draggable key={card} draggableId={card} index={index}>
