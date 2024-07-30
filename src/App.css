@@ -12,13 +12,14 @@
   align-items: flex-start;
   overflow-x: auto;
   flex: 1;
-  & .lists-droppable {
-    display: flex;
-    flex: none;
-    overflow: hidden;
-    height: 100%;
-    align-items: flex-start;
-  }
+}
+
+.lists .lists-droppable {
+  flex: none;
+  overflow: hidden;
+  height: 100%;
+  align-items: flex-start;
+  display: flex;
 }
 
 ::-webkit-scrollbar-thumb {
