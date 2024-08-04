@@ -60,6 +60,7 @@ function ListView(props: ListProps) {
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
+              className="card-content"
               style={{ overflowY: "auto" }}
             >
               <div style={{ background: "transparent", minHeight: 1, marginTop: 1 }}>
