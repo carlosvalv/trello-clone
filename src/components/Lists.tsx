@@ -16,7 +16,7 @@ import BtnAddList from "./BtnAddList/BtnAddList";
 import DraggableScroll from "./Draggable";
 
 function Lists() {
-  const stateLists = useSelector((store: AppStore) => store.lists);
+  const stateLists = useSelector((store: AppStore) => store.list.lists);
   const dispatch = useDispatch();
 
   const getItemStyle = (

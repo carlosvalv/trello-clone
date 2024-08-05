@@ -3,11 +3,12 @@ import TextareaAutosize from "react-textarea-autosize";
 
 type DynamicHeightTextareaProps = {
   defaultValue: string;
+  placeholder?: string;
   onChange: (text: string) => void;
 };
 
 const DynamicHeightTextarea = (props: DynamicHeightTextareaProps) => {
-  const { defaultValue, onChange } = props;
+  const { defaultValue, placeholder, onChange } = props;
   const [text, setText] = useState(defaultValue);
 
   const handleChange = (event: any) => {
@@ -16,7 +17,12 @@ const DynamicHeightTextarea = (props: DynamicHeightTextareaProps) => {
   };
 
   return (
-    <TextareaAutosize onChange={handleChange} value={text} maxLength={512} />
+    <TextareaAutosize
+      placeholder={placeholder}
+      onChange={handleChange}
+      value={text}
+      maxLength={512}
+    />
   );
 };
 

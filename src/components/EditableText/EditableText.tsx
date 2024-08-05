@@ -6,14 +6,10 @@ type EditableTextProps = {
   defaultText: string;
   defaultEditing?: boolean;
   allowEmpty?: boolean;
+  placeholder?: string;
   onChange(text: string): void;
   onExit?(): void;
 };
-
-EditableText.defaultProps= {
-  defaultEditing : false,
-  allowEmpty: false
-}
 
 function EditableText(props: EditableTextProps) {
   const [isEditing, setIsEditing] = useState(props.defaultEditing);
@@ -23,15 +19,21 @@ function EditableText(props: EditableTextProps) {
 
   const exitEditing = useCallback(() => {
     setIsEditing(false);
-    if(props.onExit) props.onExit();
-    if (!props.allowEmpty && name === "") return;
+    if (props.onExit) props.onExit();
+    if (!props.allowEmpty && name === "") {
+      setName(props.defaultText);
+      return;
+    }
     props.onChange(name.trim());
   }, [name, props]);
 
   useEffect(() => {
     function handleClickOutside(event: any) {
-      //@ts-ignore
-      if (textareaRef.current && !textareaRef.current.contains(event.target)) {
+      if (
+        textareaRef.current &&
+        //@ts-ignore
+        !textareaRef.current.contains(event.target)
+      ) {
         exitEditing();
       }
     }
@@ -61,6 +63,7 @@ function EditableText(props: EditableTextProps) {
       {isEditing ? (
         <div ref={textareaRef} className="textarea-container">
           <DynamicHeightTextarea
+            placeholder={props.placeholder}
             defaultValue={name}
             onChange={(text) => onChange(text)}
           />
@@ -71,5 +74,9 @@ function EditableText(props: EditableTextProps) {
     </div>
   );
 }
+EditableText.defaultProps = {
+  defaultEditing: false,
+  allowEmpty: false,
+};
 
 export default EditableText;

@@ -23,7 +23,7 @@ function ModalCardDetail(props: ModalCardDetailProps) {
     (store: AppStore) => selectCardById(store.cards, props.id)[0]
   );
   const list = useSelector((store: AppStore) =>
-    store.lists.find((x) => x.cards.includes(props.id))
+    store.list.lists.find((x) => x.cards.includes(props.id))
   );
 
   const onTitleChange = (title: string) => {
