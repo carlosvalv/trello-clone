@@ -1,47 +1,55 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { List } from "../../types/List";
+import { List, ListRedux } from "../../types/List";
 import { LocalStorageTypes } from "../../enums/localStorage";
 import { getLocalStorage, setLocalStorage } from "../../utilities/localStorage";
 import { v4 as uuidv4 } from "uuid";
 import { arrayMove } from "../../utilities/array";
 
-const initialState: List[] = [
-  { id: uuidv4(), name: "TODO", cards: ["1", "2"] },
-  { id: uuidv4(), name: "DONE", cards: ["3", "4"] },
-];
+const initialState : ListRedux = {
+  lists: getLocalStorage(LocalStorageTypes.LISTS)
+    ? JSON.parse(getLocalStorage(LocalStorageTypes.LISTS) as string)
+    : [],
+  focusedListId: undefined,
+};
 
 export const listsSlice = createSlice({
   name: "lists",
-  initialState: getLocalStorage(LocalStorageTypes.LISTS)
-    ? JSON.parse(getLocalStorage(LocalStorageTypes.LISTS) as string)
-    : initialState,
+  initialState: initialState,
   reducers: {
     addList: (state, action) => {
-      const newState = [...state, action.payload];
-      setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(newState));
+      const list = [...state.lists, action.payload];
+      setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(list));
+      const newState = { lists: list, focusedListId: action.payload.id };
       return newState;
     },
     updateLists: (state, action) => {
-      const newState = state.map((list: List) => {
+      const newState = state.lists.map((list: List) => {
         let newList = action.payload.filter((x: List) => x.id === list.id);
         if (newList.length) return newList[0];
         return list;
       });
 
       setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(newState));
-      return newState;
+      return {...state, lists: newState};
     },
     deleteList: (state, action) => {
-      const newState = state.filter((list: List) => list.id !== action.payload);
+      const newState = state.lists.filter(
+        (list: List) => list.id !== action.payload
+      );
       setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(newState));
-      return newState;
+      return {...state, lists: newState};
     },
     reorderList: (state, action) => {
-      const newState = arrayMove(state, action.payload[0], action.payload[1]);
+      const newState = arrayMove(
+        state.lists,
+        action.payload[0],
+        action.payload[1]
+      );
       setLocalStorage(LocalStorageTypes.LISTS, JSON.stringify(newState));
-      return newState;
+      return {...state, lists: newState};
     },
   },
 });
 
-export const { addList, updateLists, deleteList, reorderList } = listsSlice.actions;
+export const { addList, updateLists, deleteList, reorderList } =
+  listsSlice.actions;

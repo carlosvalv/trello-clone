@@ -22,12 +22,12 @@ function BtnMove(props: BtnMoveProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const currentList = useSelector((store: AppStore) =>
-    store.lists.find((x) => x.cards.includes(props.id))
+    store.list.lists.find((x) => x.cards.includes(props.id))
   );
   const [selectedList, setSelectedList] = React.useState<string>(
     currentList?.id ?? ""
   );
-  const lists = useSelector((store: AppStore) => store.lists);
+  const lists = useSelector((store: AppStore) => store.list.lists);
 
   const moveToList = (list: string) => {
     if (!list || list === currentList?.id) return;

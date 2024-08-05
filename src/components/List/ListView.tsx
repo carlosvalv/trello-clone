@@ -63,7 +63,13 @@ function ListView(props: ListProps) {
               className="card-content"
               style={{ overflowY: "auto" }}
             >
-              <div style={{ background: "transparent", minHeight: 1, marginTop: 1 }}>
+              <div
+                style={{
+                  background: "transparent",
+                  minHeight: 1,
+                  marginTop: 1,
+                }}
+              >
                 {list.cards &&
                   list.cards.map((card, index) => (
                     <Draggable key={card} draggableId={card} index={index}>

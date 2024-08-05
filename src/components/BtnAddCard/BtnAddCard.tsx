@@ -13,12 +13,12 @@ type BtnAddCardProps = {
 
 function BtnAddCard(props: BtnAddCardProps) {
   const dispatch = useDispatch();
-  const stateLists = useSelector((store: AppStore) => store.lists);
+  const stateLists = useSelector((store: AppStore) => store.list.lists);
 
   const click = () => {
     let list = { ...stateLists.find((x) => x.id === props.listId) };
     let cards = [...list?.cards!];
-    let card : Card = {id : uuidv4(), title : "New Card"};
+    let card: Card = { id: uuidv4(), title: "New Card" };
     cards.push(card.id);
     list.cards = cards;
     dispatch(updateLists([list]));
