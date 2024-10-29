@@ -15,7 +15,7 @@ function EditDescription(props: EditDescriptionProps) {
   const [editing, setEditing] = useState(false);
   
   const card = useSelector(
-    (store: AppStore) => selectCardById(store.cards, props.id)[0]
+    (store: AppStore) => selectCardById(store.card.cards, props.id)[0]
   );
 
   const onDescChange = (desc: string) => {

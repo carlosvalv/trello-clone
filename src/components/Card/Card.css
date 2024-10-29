@@ -17,7 +17,7 @@
     }
   }
 }
-.card span {
+.card .editable-text h2 {
   text-align: left;
   display: block;
   font-size: 14px;
@@ -28,6 +28,8 @@
   display: -webkit-box;
   -webkit-line-clamp: 4;
   overflow: hidden;
+  font-weight: 400;
+  padding: 0;
 }
 .card:hover {
   border: 2px solid #d0d0d0;
