@@ -20,7 +20,7 @@ function ModalCardDetail(props: ModalCardDetailProps) {
   const dispatch = useDispatch();
 
   const card = useSelector(
-    (store: AppStore) => selectCardById(store.cards, props.id)[0]
+    (store: AppStore) => selectCardById(store.card.cards, props.id)[0]
   );
   const list = useSelector((store: AppStore) =>
     store.list.lists.find((x) => x.cards.includes(props.id))

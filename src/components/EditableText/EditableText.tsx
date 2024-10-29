@@ -7,6 +7,7 @@ type EditableTextProps = {
   defaultEditing?: boolean;
   allowEmpty?: boolean;
   placeholder?: string;
+  disableEdit?: boolean;
   onChange(text: string): void;
   onExit?(): void;
 };
@@ -46,6 +47,7 @@ function EditableText(props: EditableTextProps) {
   }, [textareaRef, name, props, exitEditing]);
 
   const onClick = () => {
+    if (props.disableEdit) return;
     setIsEditing(true);
   };
 
